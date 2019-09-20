@@ -44,13 +44,6 @@ public class Fraction {
         return numerator.equals(BigDecimal.ONE);
     }
 
-    /**
-     * Calculates gcd of two numbers
-     *
-     * @param numerator
-     * @param denominator
-     * @return
-     */
     public BigDecimal calculateGCD(BigDecimal numerator, BigDecimal denominator) {
         if (numerator.remainder(denominator).equals(BigDecimal.ZERO)) {
             return denominator;
@@ -58,16 +51,15 @@ public class Fraction {
         return calculateGCD(denominator, numerator.remainder(denominator));
     }
 
-    void reduce() {
+    private void reduce() {
         BigDecimal gcd = calculateGCD(numerator, denominator);
         numerator = numerator.divide(gcd, RoundingMode.CEILING);
         denominator = denominator.divide(gcd, RoundingMode.CEILING);
     }
 
-    public Fraction add(Fraction fractionTwo) {
-        BigDecimal numer = (numerator.multiply(fractionTwo.getDenominator())).add(fractionTwo.getNumerator().multiply(denominator));
-        BigDecimal denr = denominator.multiply(fractionTwo.getDenominator());
-        return new Fraction(numer, denr);
+    private void abs() {
+        numerator = numerator.abs();
+        denominator = denominator.abs();
     }
 
     public Fraction subtract(Fraction fractionTwo) {
@@ -75,6 +67,7 @@ public class Fraction {
         BigDecimal newDenominator = denominator.multiply(fractionTwo.denominator);
         Fraction result = new Fraction(newNumerator, newDenominator);
         result.reduce();
+        result.abs();
         return result;
     }
 
