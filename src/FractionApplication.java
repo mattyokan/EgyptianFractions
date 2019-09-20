@@ -19,6 +19,9 @@ public class FractionApplication {
             long q = scan.nextLong();
 
             Fraction frac = new Fraction(p, q);
+            frac.reduce();
+            frac.abs();
+
             List<Fraction> result = frac.toUnitFraction();
             System.out.printf("Result:\n" + result.stream().map(Fraction::toString).collect(Collectors.joining(" + ")) + " \n");
         }

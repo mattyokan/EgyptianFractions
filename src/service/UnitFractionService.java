@@ -20,11 +20,8 @@ public class UnitFractionService {
         return instance;
     }
 
-    private NumberFormat numberFormat;
-
     public UnitFractionService() {
          instance = this;
-         numberFormat = NumberFormat.getInstance();
     }
 
     public List<Fraction> createUnitFraction(Fraction baseFraction) {
@@ -43,7 +40,4 @@ public class UnitFractionService {
         return fractions;
     }
 
-    public NumberFormat getNumberFormat() {
-        return numberFormat;
-    }
 }

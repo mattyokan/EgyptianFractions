@@ -51,13 +51,13 @@ public class Fraction {
         return calculateGCD(denominator, numerator.remainder(denominator));
     }
 
-    private void reduce() {
+    public void reduce() {
         BigDecimal gcd = calculateGCD(numerator, denominator);
         numerator = numerator.divide(gcd, RoundingMode.CEILING);
         denominator = denominator.divide(gcd, RoundingMode.CEILING);
     }
 
-    private void abs() {
+    public void abs() {
         numerator = numerator.abs();
         denominator = denominator.abs();
     }
@@ -77,8 +77,7 @@ public class Fraction {
 
     @Override
     public String toString() {
-        NumberFormat format = UnitFractionService.getInstance().getNumberFormat();
-        return format.format(numerator) + " / " + format.format(denominator);
+        return String.format("%.0f/%.0f", numerator, denominator);
     }
 
 }
