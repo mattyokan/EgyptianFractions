@@ -7,10 +7,9 @@ import java.util.stream.Collectors;
 public class FractionApplication {
 
     public static void main(String[] args) {
-        boolean quit = false;
         Scanner scan = new Scanner(System.in);
         System.out.println("Egyptian Fraction Solver:");
-        while(!quit) {
+        while(true) {
 
             System.out.print("p: ");
             long p = scan.nextLong();
@@ -23,7 +22,7 @@ public class FractionApplication {
             frac.abs();
 
             List<Fraction> result = frac.toUnitFraction();
-            System.out.printf("Result:\n" + result.stream().map(Fraction::toString).collect(Collectors.joining(" + ")) + " \n");
+            System.out.println("Result:\n" + result.stream().map(Fraction::toString).collect(Collectors.joining(" + ")) + " ");
         }
     }
 }

@@ -3,11 +3,9 @@ package service;
 import math.Fraction;
 
 import java.math.RoundingMode;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UnitFractionService {
 
@@ -32,7 +30,7 @@ public class UnitFractionService {
         List<Fraction> fractions = new ArrayList<>();
         Fraction remaining = baseFraction;
         while(!remaining.isUnitFraction()) {
-            Fraction largestExtractable = new Fraction(1, baseFraction.getDenominator().divide(baseFraction.getNumerator(), RoundingMode.CEILING));
+            Fraction largestExtractable = new Fraction(1, remaining.getDenominator().divide(remaining.getNumerator(), RoundingMode.CEILING));
             fractions.add(largestExtractable);
             remaining = remaining.subtract(largestExtractable);
         }
